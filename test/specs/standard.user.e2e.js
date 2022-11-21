@@ -8,7 +8,6 @@ describe('When login whit standard user', () => {
         await LoginPage.inputUsername.setValue("standard_user");
         await LoginPage.inputPassword.setValue("secret_sauce");
         await LoginPage.btnLogin.click();
-        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
     })
     it('Should have a title when logged in the main page', async () => {
         await expect(LoginPage.titlePage).toHaveTitle('Swag Labs');
