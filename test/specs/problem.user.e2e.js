@@ -1,0 +1,1 @@
+import LoginPage from "../pageobjects/login.page";
