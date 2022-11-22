@@ -23,17 +23,10 @@ class LoginPage {
         return $('#login_button_container > div > form > div.error-message-container.error > h3');
     }
 
-    get titlePage () {
-        return $('#header_container > div.primary_header > div.header_label > div')
-    }
-
     get errorLockedMsg () {
         return $('#login_button_container > div > form > div.error-message-container.error > h3')
     }
 
-    get productImage () {
-        return $('#item_4_img_link > img')
-    }
 
     /**
      * a method to encapsule automation code to interact with the page
