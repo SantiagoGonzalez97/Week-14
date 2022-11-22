@@ -40,4 +40,11 @@ describe('When login whit problem user', () => {
     it('Should not see the inventory products, instead a dog image is shown', async () => {
         await expect(HomePage.productImage).toHaveAttr('src', 'https://www.saucedemo.com/static/media/sl-404.168b1cce.jpg');
     })
+    it('Should log out', async () => {
+        await HomePage.btnBurger.waitForDisplayed({timeout: 5000});
+        await HomePage.btnBurger.click();
+        await HomePage.btnLogout.waitForDisplayed({timeout: 5000});
+        await HomePage.btnLogout.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/');
+    })
 })
