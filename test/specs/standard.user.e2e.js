@@ -19,22 +19,17 @@ describe('When login whit standard user', () => {
     })
     it('Should not login whit invalid username', async () => {
         await LoginPage.inputUsername.setValue("test");
-        await LoginPage.inputPassword.setValue("secret_sauce");;
+        await LoginPage.inputPassword.setValue("secret_sauce");
         await LoginPage.btnLogin.click();
         await LoginPage.errorMsg.waitForDisplayed({timeout: 10000});
         await expect(LoginPage.inputUsername).toHaveValueContaining('test');
-        await expect(LoginPage.inputPassword).toHaveValueContaining('secret_sauce')
+        await expect(LoginPage.inputPassword).toHaveValueContaining('secret_sauce');
         await expect(LoginPage.errorMsg).toBeDisplayed();
         await expect(LoginPage.errorMsg).toHaveText("Epic sadface: Username and password do not match any user in this service");
         await expect(LoginPage.btnLogin).toBeClickable();
     })
     it('Should login whit validate credentials', async () => {
-        await LoginPage.inputUsername.setValue("standard_user");
-        await LoginPage.inputPassword.setValue("secret_sauce");
-        await LoginPage.btnLogin.click();
-        await expect(LoginPage.inputUsername).toHaveValueContaining('secret_sauce');
-        await expect(LoginPage.inputPassword).toHaveValueContaining('secret_sauce');
-        await expect(LoginPage.btnLogin).toBeClickable();
+        await LoginPage.login('standard_user', 'secret_sauce');
     })
     it('Should have a title when logged in the main page', async () => {
         await expect(HomePage.titlePage).toHaveTitle('Swag Labs');
@@ -45,4 +40,4 @@ describe('When login whit standard user', () => {
     it('Should see in the inventory products like this', async () => {
         await expect(HomePage.productImage).toHaveAttr('src', 'https://www.saucedemo.com/static/media/sauce-backpack-1200x1500.34e7aa42.jpg');
     })
-})
+});
