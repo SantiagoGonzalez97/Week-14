@@ -31,6 +31,9 @@ describe('When login whit problem user', () => {
     it('Should login whit validate credentials', async () => {
         await LoginPage.login('problem_user', 'secret_sauce');
     })
+    it('Should have a title when logged in the main page', async () => {
+        await expect(HomePage.titlePage).toHaveTitle('Swag Labs');
+    })
     it('Should redirect to inventory URL when logged', async () => {
         await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
     })
