@@ -1,6 +1,8 @@
 import LoginPage from '../pageobjects/login.page';
 import HomePage from '../pageobjects/home.page';
 
+
+
 describe('When standard user try to purchase', () => {
     beforeAll('Navigate to url', () => {
         browser.url("https://www.saucedemo.com/");
@@ -12,10 +14,10 @@ describe('When standard user try to purchase', () => {
         await expect(LoginPage.inputPassword).toHaveValueContaining('secret_sauce');
         await LoginPage.btnLogin.click();
     })
-    it('Should add to cart', async () => {
+    it('Should add an item to cart', async () => {
         await HomePage.btnAddToCart.click();
     })
-    it('Should remove off the cart', async () => {
+    it('Should remove an item off the cart', async () => {
         await HomePage.btnRemoveOfCart.click();
         await expect(HomePage.btnAddToCart).toBeClickable();
     })
@@ -35,6 +37,27 @@ describe('When standard user try to purchase', () => {
     it('Should go back to cart page when clicking', async () => {
         await HomePage.btnCancel.click();
         await expect(browser).toHaveUrl('https://www.saucedemo.com/cart.html')
-
+    })
+    it('Should checkout information', async () => {
+        await HomePage.btnCheckout.click();
+        await HomePage.inputFirstName.setValue("test");
+        await expect(HomePage.inputFirstName).toHaveValueContaining("test");
+        await HomePage.inputLastName.setValue("test");
+        await expect(HomePage.inputLastName).toHaveValueContaining("test");
+        await HomePage.inputPostalCode.setValue("2000");
+        await expect(HomePage.inputPostalCode).toHaveValueContaining("2000");
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-one.html');
+    })
+    it('Should see the checkout overview when clicking', async () => {
+        await HomePage.btnContinue.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-step-two.html');
+    })
+    it('Should finish the purchase when clicking', async () => {
+        await HomePage.btnFinish.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/checkout-complete.html');
+    })
+    it('Should go back to inventory page when clicking', async () => {
+        await HomePage.btnBackHome.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
     })
 })
