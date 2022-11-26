@@ -15,7 +15,56 @@ class HomePage {
     get btnLogout () {
         return $('#logout_sidebar_link');
     }
+
+    get btnAddToCart () {
+        return $('#add-to-cart-sauce-labs-backpack');
+    }
+
+    get btnRemoveOfCart () {
+        return $('#remove-sauce-labs-backpack');
+    }
+
+    get btnCart () {
+        return $('#shopping_cart_container');
+    }
+
+    get btnContinueShopping() {
+        return $('#continue-shopping');
+    }
+
+    get btnCheckout() {
+        return $('#checkout');
+    }
+
+    get inputFirstName() {
+        return $('#first-name');
+    }
+
+    get inputLastName() {
+        return $('#last-name');
+    }
+
+    get inputPostalCode() {
+        return $('#postal-code');
+    }
+
+    get btnCancel() {
+        return $('#cancel');
+    }
+
+    get btnContinue() {
+        return $('#continue');
+    }
+
+    get btnFinish() {
+        return $('#finish');
+    }
+
+    get btnBackHome() {
+        return $('#back-to-products');
+    }
 }
 
+
+
 export default new HomePage();
-//logout_sidebar_link
