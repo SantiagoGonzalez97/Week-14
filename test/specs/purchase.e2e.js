@@ -14,14 +14,21 @@ describe('When standard user try to purchase', () => {
         await expect(LoginPage.inputPassword).toHaveValueContaining('secret_sauce');
         await LoginPage.btnLogin.click();
     })
-    it('Should add an item to cart', async () => {
+    it('Should have a title when logged in the main page', async () => {
+        await expect(HomePage.titlePage).toHaveTitle('Swag Labs');
+    })
+    it('Should see in the inventory this item', async () => {
+        await expect(HomePage.productImage).toHaveAttr('src', 'https://www.saucedemo.com/static/media/sauce-backpack-1200x1500.34e7aa42.jpg');
+    })
+    it('Should add the item to cart', async () => {
         await HomePage.btnAddToCart.click();
     })
-    it('Should remove an item off the cart', async () => {
+    it('Should remove the item off the cart', async () => {
         await HomePage.btnRemoveOfCart.click();
         await expect(HomePage.btnAddToCart).toBeClickable();
     })
-    it('Should see the items show on the cart link', async () => {
+    it('Should see the items show on the cart link whit an item on', async () => {
+        await HomePage.btnAddToCart.click();
         await HomePage.btnCart.click();
         await expect(browser).toHaveUrl('https://www.saucedemo.com/cart.html')
     })
