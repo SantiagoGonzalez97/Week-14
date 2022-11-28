@@ -63,8 +63,20 @@ class HomePage {
     get btnBackHome() {
         return $('#back-to-products');
     }
+
+    get btnTwitter() {
+        return $('#page_wrapper > footer > ul > li.social_twitter');
+    }
+
+    get btnFacebook() {
+        return $('#page_wrapper > footer > ul > li.social_facebook');
+    }
+
+    get btnFacebook() {
+        return $('#page_wrapper > footer > ul > li.social_linkedin');
+    }
 }
 
 
 
-export default new HomePage();
+export default new HomePage(); 

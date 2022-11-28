@@ -14,6 +14,9 @@ describe('When standard user try to purchase', () => {
         await expect(LoginPage.inputPassword).toHaveValueContaining('secret_sauce');
         await LoginPage.btnLogin.click();
     })
+    it('Should redirect to inventory URL when logged', async () => {
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    })
     it('Should have a title when logged in the main page', async () => {
         await expect(HomePage.titlePage).toHaveTitle('Swag Labs');
     })
@@ -66,5 +69,12 @@ describe('When standard user try to purchase', () => {
     it('Should go back to inventory page when clicking', async () => {
         await HomePage.btnBackHome.click();
         await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    })
+    it('Should log out', async () => {
+        await HomePage.btnBurger.waitForDisplayed({timeout: 5000});
+        await HomePage.btnBurger.click();
+        await HomePage.btnLogout.waitForDisplayed({timeout: 5000});
+        await HomePage.btnLogout.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/');
     })
 })
