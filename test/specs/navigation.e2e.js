@@ -24,6 +24,38 @@ describe('When navigate whit standard user', () => {
         await expect(browser).toHaveUrl('https://twitter.com/saucelabs');
         await browser.closeWindow();
         await browser.switchWindow('inventory');
-        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html')
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    })
+    it('Should redirect to facebook sauce labs page', async () => {
+        await HomePage.btnFacebook.click();
+        await browser.switchWindow('saucelabs');
+        await expect(browser).toHaveUrl('https://www.facebook.com/saucelabs');
+        await browser.closeWindow();
+        await browser.switchWindow('inventory');
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    })
+    it('Should redirect to linkedin sauce labs page', async () => {
+        await HomePage.btnLinkedin.click();
+        await browser.switchWindow('sauce-labs');
+        await expect(browser).toHaveUrlContaining('www.linkedin.com');
+        await browser.closeWindow();
+        await browser.switchWindow('inventory');
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    })
+    it('Should redirect to about sauce labs page', async () => {
+        await HomePage.btnBurger.waitForDisplayed({timeout: 5000});
+        await HomePage.btnBurger.click();
+        await HomePage.btnAbout.waitForDisplayed({timeout: 5000});
+        await HomePage.btnAbout.click();
+        await expect(browser).toHaveUrl('https://saucelabs.com/');
+        await browser.back();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+    })
+    it('Should log out', async () => {
+        await HomePage.btnBurger.waitForDisplayed({timeout: 5000});
+        await HomePage.btnBurger.click();
+        await HomePage.btnLogout.waitForDisplayed({timeout: 5000});
+        await HomePage.btnLogout.click();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/');
     })
 })

@@ -72,11 +72,15 @@ class HomePage {
         return $('#page_wrapper > footer > ul > li.social_facebook');
     }
 
-    get btnFacebook() {
+    get btnLinkedin() {
         return $('#page_wrapper > footer > ul > li.social_linkedin');
+    }
+
+    get btnAbout() {
+        return $('#about_sidebar_link');
     }
 }
 
 
 
-export default new HomePage(); 
+export default new HomePage();
