@@ -51,6 +51,15 @@ describe('When navigate whit standard user', () => {
         await browser.back();
         await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
     })
+    it('Should use filter', async () => {
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        await expect(HomePage.imgBackpack).toBeDisplayed();
+        await HomePage.btnFilter.click();
+        await expect(HomePage.filterZA).toBeDisplayed();
+        await HomePage.filterZA.click();
+        await expect(HomePage.filterZA).toHaveText('Name (Z to A)');
+        await expect(HomePage.imgShirt).toBeDisplayed();
+    })
     it('Should log out', async () => {
         await HomePage.btnBurger.waitForDisplayed({timeout: 5000});
         await HomePage.btnBurger.click();

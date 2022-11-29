@@ -79,6 +79,22 @@ class HomePage {
     get btnAbout() {
         return $('#about_sidebar_link');
     }
+
+    get btnFilter() {
+        return $('#header_container > div.header_secondary_container > div.right_component > span > select');
+    }
+
+    get imgBackpack() {
+        return $('#item_4_img_link > img');
+    }
+
+    get imgShirt() {
+        return $('#item_3_img_link > img');
+    }
+
+    get filterZA() {
+        return $('#header_container > div.header_secondary_container > div.right_component > span > select > option:nth-child(2)');
+    }
 }
 
 
